@@ -1,38 +1,19 @@
 import Head from 'next/head';
 import Image from 'next/image';
-
+import Layout from '@/components/Layouts/Layout';
+import Link from 'next/link';
+import { Container } from 'reactstrap';
 import styles from '@/styles/Home.module.css';
+import { NextPage } from 'next';
 
-export default function Home() {
+
+const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>TypeScript starter for Next.js</title>
-        <meta
-          name="description"
-          content="TypeScript starter for Next.js that includes all you need to build amazing apps"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=typescript-nextjs-starter"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{` `}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+    <Layout>
+        <Container className='my-5 py-5'>
+            <h1> 헬로우 타입스크립트 </h1>
+        </Container>
+    </Layout>
   );
 }
+export default Home
