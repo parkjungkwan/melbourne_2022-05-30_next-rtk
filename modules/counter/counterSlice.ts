@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState, AppThunk } from '@/modules/store'
+import { AppState } from '@/modules/store'
 import { fetchCount } from '@/modules/counter/counterAPI'
 
 
@@ -26,10 +26,7 @@ export const counterSlice = createSlice({
     initialState,
     reducers: {
         increment: (state) =>{ state.value += 1},
-        decrement: (state) =>{ state.value -= 1},
-        incrementByAmount: (state, action: PayloadAction<number>) =>{
-            state.value += action.payload
-        }
+        decrement: (state) =>{ state.value -= 1}
     },
     extraReducers: (builder) =>{
         builder.addCase(incrementAsync.pending, (state) => {
@@ -42,14 +39,8 @@ export const counterSlice = createSlice({
     }
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
-export const selectCount = (state: RootState) => state.counter.value
-export const incrementIfOdd = (amount: number) : AppThunk => ( dispatch, getState ) => {
-    const currentValue = selectCount(getState)
-    if( currentValue % 2 === 1) {
-        dispatch(incrementByAmount(amount))
-    }
-} 
+export const { increment, decrement } = counterSlice.actions
+export const selectCount = (state: AppState) => state.value
+
 
 export default counterSlice.reducer
-
